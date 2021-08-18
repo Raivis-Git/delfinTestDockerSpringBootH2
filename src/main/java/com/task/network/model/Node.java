@@ -5,9 +5,7 @@ import java.util.List;
 
 public class Node {
     String value;
-    Node parentNode;
     List<Node> childNodes;
-    int depth = 0;
     
     public Node(String value) {
         this.value = value;
@@ -15,7 +13,6 @@ public class Node {
     
     public void addChild(ArrayList<String> childValues) {
         ArrayList<Node> childNodes = new ArrayList<>();
-        depth++;
         
         for (String nodeValue : childValues)
             childNodes.add(new Node(nodeValue));
@@ -23,15 +20,11 @@ public class Node {
         this.childNodes = childNodes;
     }
     
-    public Node getParentNode() {
-        return parentNode;
+    public String getValue() {
+        return value;
     }
     
-    public int getDepth() {
-        return depth;
-    }
-    
-    public void setDepth(int depth) {
-        this.depth = depth;
+    public List<Node> getChildNodes() {
+        return childNodes;
     }
 }

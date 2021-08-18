@@ -29,7 +29,7 @@ public class DeviceController {
     public ResponseEntity<?> addDevice(@RequestBody Device device) {
         if (deviceService.addDevice(device))
             return ResponseEntity.created(null).build();
-        return ResponseEntity.badRequest().build();
+        return ResponseEntity.unprocessableEntity().build();
     }
     
     @GetMapping("findAll")
@@ -46,11 +46,9 @@ public class DeviceController {
         return ResponseEntity.ok().body(new DeviceByMacAddressResponse(device.getDeviceType(), device.getMacAddress()));
     }
     
-    @GetMapping("topology")
-    public ResponseEntity<?> getDeviceTree() {
-        HashMap<String, ArrayList<String>> deviceTopology = deviceService.orderDevicesFirstLevel();
-        Node node = deviceService.getDeviceTopologyForDevice("00-40-96-01-23-47");
-        return ResponseEntity.ok().body(deviceTopology);
+    @GetMapping("topology/{macAddress}")
+    public ResponseEntity<?> getDeviceTree(@PathVariable String macAddress) {
+        return ResponseEntity.ok().body(deviceService.getDeviceTopologyForDevice(macAddress));
     }
     
 }
