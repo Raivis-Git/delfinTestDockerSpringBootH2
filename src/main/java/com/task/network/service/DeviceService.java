@@ -53,15 +53,6 @@ public class DeviceService {
         return node;
     }
     
-//    public void findInSet(Set<String> stringSet, String macAddress) {
-//        for (String keySet : stringSet) {
-//            if (deviceTopology.get(keySet).contains(macAddress)) {
-//
-//            }
-//        }
-//        return childNodes;
-//    }
-    
     public HashMap<String, ArrayList<String>> orderDevicesFirstLevel() {
         List<Device> deviceList = deviceRepository.findAll();
         HashMap<String, ArrayList<String>> topologyMap = new HashMap<>();
