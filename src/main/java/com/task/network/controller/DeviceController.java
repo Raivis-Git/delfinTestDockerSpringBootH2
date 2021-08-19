@@ -2,6 +2,7 @@ package com.task.network.controller;
 
 import com.task.network.controller.response.DeviceByMacAddressResponse;
 import com.task.network.model.Device;
+import com.task.network.model.Node;
 import com.task.network.service.DeviceService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,7 +46,18 @@ public class DeviceController {
     
     @GetMapping("topology/{macAddress}")
     public ResponseEntity<?> getDeviceTree(@PathVariable String macAddress) {
-        return ResponseEntity.ok().body(deviceService.getDeviceTopologyForDevice(macAddress));
+        Node node = deviceService.getDeviceTopologyForDevice(macAddress);
+        if (node == null)
+            return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().body(node);
+    }
+    
+    @GetMapping("topology")
+    public ResponseEntity<?> getDeviceTree() {
+        Node node = deviceService.getDeviceTopologyForDevice("root");
+        if (node == null)
+            return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().body(node);
     }
     
 }
