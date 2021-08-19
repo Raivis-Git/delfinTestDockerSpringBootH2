@@ -31,3 +31,6 @@ Get method to find a device by mac address
   
 Get topology for a device
   http://localhost:8080/api/device/topology/{macAddress}
+  
+Get all device topology
+  http://localhost:8080/api/device/topology
