@@ -50,7 +50,7 @@ public class DeviceController {
     }
     
     @GetMapping("topology")
-    public ResponseEntity<?> getDeviceTree() {
+    public ResponseEntity<?> getDeviceFullTree() {
         return ResponseEntity.ok().body(deviceService.getDeviceTopologyForDevice("root"));
     }
     
