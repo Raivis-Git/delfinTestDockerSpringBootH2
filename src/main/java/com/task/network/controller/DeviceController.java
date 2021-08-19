@@ -46,18 +46,7 @@ public class DeviceController {
     
     @GetMapping("topology/{macAddress}")
     public ResponseEntity<?> getDeviceTree(@PathVariable String macAddress) {
-        Node node = deviceService.getDeviceTopologyForDevice(macAddress);
-        if (node == null)
-            return ResponseEntity.noContent().build();
-        return ResponseEntity.ok().body(node);
-    }
-    
-    @GetMapping("topology")
-    public ResponseEntity<?> getDeviceTree() {
-        Node node = deviceService.getDeviceTopologyForDevice("root");
-        if (node == null)
-            return ResponseEntity.noContent().build();
-        return ResponseEntity.ok().body(node);
+        return ResponseEntity.ok().body(deviceService.getDeviceTopologyForDevice(macAddress));
     }
     
     @GetMapping("topology")
