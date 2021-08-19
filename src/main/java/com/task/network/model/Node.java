@@ -27,4 +27,13 @@ public class Node {
     public List<Node> getChildNodes() {
         return childNodes;
     }
+    
+    public Node getChildNodeWithValue(String value) {
+        List<Node> childNodes = getChildNodes();
+        for (Node childNode : childNodes) {
+            if (childNode.value.equals(value))
+                return childNode;
+        }
+        return null;
+    }
 }

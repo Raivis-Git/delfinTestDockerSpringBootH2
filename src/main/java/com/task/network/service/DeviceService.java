@@ -39,21 +39,31 @@ public class DeviceService {
     }
     
     public Node getDeviceTopologyForDevice(String macAddress) {
-        HashMap<String, ArrayList<String>> orderedFirstLevel = orderDevicesFirstLevel();
+        HashMap<String, ArrayList<String>> orderedHashMap = orderEveryDeviceSingleLevel();
         
         Node node = new Node(macAddress);
-        
-        for (String key : orderedFirstLevel.keySet()) {
-            if (orderedFirstLevel.get(key).contains(macAddress)) {
-                node.addChild(orderedFirstLevel.get(key));
+        iterateForChild(orderedHashMap, node, macAddress);
+        return node;
+    }
+    
+    public  void iterateForChild(HashMap<String, ArrayList<String>> hashMap, Node node, String macAddress) {
+        List<String> nextMacAddressList = new ArrayList<>();
+        for (String key : hashMap.keySet()) {
+            if (key.equals(macAddress)) {
+                node.addChild(hashMap.get(key));
+                node.getChildNodes().forEach(childNode -> nextMacAddressList.add(childNode.getValue()));
                 break;
             }
         }
         
-        return node;
+        if (nextMacAddressList.size() == 0)
+            return;
+        
+        for (String nextMacAddress : nextMacAddressList)
+            iterateForChild(hashMap, node.getChildNodeWithValue(nextMacAddress), nextMacAddress);
     }
     
-    public HashMap<String, ArrayList<String>> orderDevicesFirstLevel() {
+    public HashMap<String, ArrayList<String>> orderEveryDeviceSingleLevel() {
         List<Device> deviceList = deviceRepository.findAll();
         HashMap<String, ArrayList<String>> topologyMap = new HashMap<>();
         Set<String> keySet;
@@ -68,9 +78,7 @@ public class DeviceService {
             
             keySet = topologyMap.keySet();
             if (keySet.contains(uplinkMacAddress)) {
-//                topologyMap.get(uplinkMacAddress).add(macAddress);
-                List<String> list = topologyMap.get(uplinkMacAddress);
-                list.add(macAddress);
+                topologyMap.get(uplinkMacAddress).add(macAddress);
             } else {
                 initList = new ArrayList<>();
                 initList.add(macAddress);
