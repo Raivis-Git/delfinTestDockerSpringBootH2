@@ -1,9 +1,7 @@
 To run application you will need:
   Docker
-  Java 8
   
 To run application:
-    ./mvnw clean package
     docker build -t delfin/delfintest .
     docker run -p 8080:8080 -t delfin/delfintest
 
