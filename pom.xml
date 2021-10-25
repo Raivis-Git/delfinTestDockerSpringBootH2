@@ -8,14 +8,16 @@
 		<version>2.5.3</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.task</groupId>
-	<artifactId>network</artifactId>
+	<groupId>com.test</groupId>
+	<artifactId>testDelfin</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>network</name>
-	<description>UI</description>
-	<properties>
-		<java.version>11</java.version>
-	</properties>
+	<name>testDelfin</name>
+	<description>test project for delfin</description>
+    <properties>
+        <java.version>8</java.version>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+    </properties>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

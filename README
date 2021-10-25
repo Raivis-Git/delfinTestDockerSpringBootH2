@@ -1,7 +1,13 @@
 To run application you will need :
   Docker
 
-To run application use command:  mvn spring-boot:run
+To run application:
+    ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=delfin/delfintest
+or
+    ./mvnw clean package
+    docker build -t delfin/delfintest .
+    docker run -p 8080:8080 -t delfin/delfintest
+
 Application will start on port 8080 and uses h2 database with initial schema defined in schema.sql and data defined in data.sql
 
 To use h2 database console open http://localhost:8080/h2-console 
