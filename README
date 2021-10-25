@@ -2,8 +2,6 @@ To run application you will need :
   Docker
 
 To run application:
-    ./mvnw spring-boot:build-image -Dspring-boot.build-image.imageName=delfin/delfintest
-or
     ./mvnw clean package
     docker build -t delfin/delfintest .
     docker run -p 8080:8080 -t delfin/delfintest
