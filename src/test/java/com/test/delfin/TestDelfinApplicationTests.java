@@ -1,4 +1,4 @@
-package com.task.network;
+package com.test.delfin;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
