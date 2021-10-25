@@ -1,6 +1,5 @@
 To run application you will need :
-  Java 11
-  Maven
+  Docker
 
 To run application use command:  mvn spring-boot:run
 Application will start on port 8080 and uses h2 database with initial schema defined in schema.sql and data defined in data.sql
@@ -10,27 +9,3 @@ driver class = org.h2.Driver
 jdbc url = jdbc:h2:mem:testdb
 name = sa
 password = password
-
-
-Uses json
-
-
-Post method to create a new device
-  http://localhost:8080/api/device
-  {
-    "deviceType": "access point", 
-    "macAddress": "12311", 
-    "uplinkMacAddress": "127.0.0.1" 
-  }
-  
-Get method to find all devices
-  http://localhost:8080/api/device/findAll
-  
-Get method to find a device by mac address
-  http://localhost:8080/api/device/macAddress/00-40-96-01-23-46
-  
-Get topology for a device
-  http://localhost:8080/api/device/topology/{macAddress}
-  
-Get all device topology
-  http://localhost:8080/api/device/topology
