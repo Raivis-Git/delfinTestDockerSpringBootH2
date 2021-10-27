@@ -1,10 +1,10 @@
 INSERT INTO r_client (first_name, last_name, personal_nr) VALUES
-  ('Liene', 'Ozola', '10101010001'),
-  ('Francis', 'Bērziņš', '10101010002'),
-  ('Matilde', 'Ziemele', '10101010003'),
-  ('Nīna', 'Veczeme', '10101010004'),
-  ('Gustavs', 'Murāns', '10101010005'),
-  ('Klāvs', 'Spolītis', '10101010006'),
-  ('Liene', 'Asnate', '10101010007'),
-  ('Gustavs', 'Bērziņš', '10101010008');
+  ('Liene', 'Ozola', '280977-13853'),
+  ('Francis', 'Bērziņš', '080272-16431'),
+  ('Matilde', 'Ziemele', '290469-13331'),
+  ('Nīna', 'Veczeme', '031166-15044'),
+  ('Gustavs', 'Murāns', '050393-17113'),
+  ('Klāvs', 'Spolītis', '270991-17604'),
+  ('Liene', 'Asnate', '170264-19602'),
+  ('Gustavs', 'Bērziņš', '200995-11618');
 
